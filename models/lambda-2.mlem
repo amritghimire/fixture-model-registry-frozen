@@ -3,25 +3,33 @@ artifacts:
     hash: 731bebc09353339b8062a58afed58188
     size: 190
     uri: lambda-2
-model_type:
-  io:
-    type: pickle
-  methods:
-    __call__:
-      args:
-      - name: data
-        type_:
-          type: unspecified
-      name: <lambda>
-      returns:
-        type: unspecified
-    predict:
-      args:
-      - name: data
-        type_:
-          type: unspecified
-      name: predict
-      returns:
-        type: unspecified
-  type: callable
+call_orders:
+  __call__:
+  - - model
+    - __call__
+  predict:
+  - - model
+    - predict
 object_type: model
+processors:
+  model:
+    io:
+      type: pickle
+    methods:
+      __call__:
+        args:
+        - name: data
+          type_:
+            type: unspecified
+        name: <lambda>
+        returns:
+          type: unspecified
+      predict:
+        args:
+        - name: data
+          type_:
+            type: unspecified
+        name: predict
+        returns:
+          type: unspecified
+    type: callable
